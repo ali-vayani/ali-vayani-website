@@ -8,7 +8,7 @@ const mono = Courier_Prime({ subsets: ["latin"], weight: ["400", "700"], style: 
 export const metadata: Metadata = {
   title: "ali vayani",
   description:
-    "cs @ ut austin • incoming summer 2026 swe intern @ stripe • building impactful tech",
+    "organizing hacktx, studying cs @ ut austin, back at stripe winter '27",
 };
 
 export default function RootLayout({

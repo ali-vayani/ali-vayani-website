@@ -13,6 +13,6 @@ export const projects: Project[] = [
     {
         title: "multicore os",
         description: "built across a semester of cs439h",
-        link: "https://www.cs.utexas.edu/~ans/classes/cs439/index.html"
+        link: "/cs439-syllabus.pdf"
     }
 ]

@@ -15,7 +15,7 @@ export default function Home() {
       <Block>
         <Row k="name"><span className="text-bright">ali vayani</span></Row>
         <Row k="now">organizing <Ext href="https://hacktx.com">hacktx</Ext> and studying cs @ <Ext href="https://www.cs.utexas.edu/">ut austin</Ext></Row>
-        <Row k="next">back at <Ext href="https://stripe.com">stripe</Ext>, winter 27</Row>
+        <Row k="next">back at <Ext href="https://stripe.com">stripe</Ext>, winter &apos;27</Row>
         <Row k="links">
           <Ext href="https://github.com/ali-vayani">github</Ext> ·{" "}
           <Ext href="https://linkedin.com/in/ali-vayani">linkedin</Ext> ·{" "}
@@ -55,15 +55,15 @@ export default function Home() {
 
       <Block>
         <Row k="experience">
-          <Ext href="https://stripe.com">stripe</Ext>, swe intern, summer 26
+          <Ext href="https://stripe.com">stripe</Ext>, swe intern, summer &apos;26
           <span className="text-dim italic"> · performance and dev infra for stripe&apos;s fork of <Ext href="https://cube.dev">cube.js</Ext></span>
         </Row>
         <Row k="">
-          <Ext href="https://www.aramco.com/en">aramco</Ext>, swe intern, summer 25
+          <Ext href="https://www.aramco.com/en">aramco</Ext>, swe intern, summer &apos;25
           <span className="text-dim italic"> · ingestion and performance for an internal rag service</span>
         </Row>
         <Row k="">
-          <Ext href="https://freetailhackers.com/">freetail hackers</Ext>, tech director 26, organizer 25
+          <Ext href="https://freetailhackers.com/">freetail hackers</Ext>, tech director &apos;26, organizer &apos;25
           <span className="text-dim italic"> · rebuilt <Ext href="https://rodeo.freetailhackers.com">rodeo</Ext>, a hackathon management platform, 3000 users. built <Ext href="https://gitlab.com/freetail-hackers/echo">echo</Ext>, a hackathon judging platform. zero downtime.</span>
         </Row>
       </Block>
