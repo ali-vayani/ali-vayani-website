@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { isValidElement } from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import Row, { Block } from "@/components/mono/Row";
 import ReadingProgress from "./ReadingProgress";
 
 export const metadata: Metadata = {
@@ -12,60 +13,24 @@ export default function SWEInternshipGuide() {
   return (
     <>
       <ReadingProgress />
-      <div className="bg-black min-h-screen">
-        <div className="flex flex-col px-4 sm:px-8 md:px-16 lg:px-60 pt-24 pb-32">
-          <div className="max-w-2xl w-full mx-auto">
+      <div className="flex flex-col gap-10">
+        <Block>
+          <Row k="title"><span className="text-bright">guide to landing swe internships</span></Row>
+          <Row k="date">may 2025 · ~10 min read</Row>
+          <Row k="note">
+            <span className="text-dim">
+              written for ut students, but most of this applies regardless of where you go
+            </span>
+          </Row>
+          <Row k="tl;dr">
+            build things with real users, make your resume defensible and impact-focused,
+            start leetcode early, communicate, learn company-specific interview formats,
+            and apply as soon as roles open.
+          </Row>
+        </Block>
 
-            {/* back + disclaimer row */}
-            <div className="flex items-start justify-between gap-6 mb-12">
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-1.5 text-white/35 hover:text-white/70 transition-colors duration-200 text-sm shrink-0 group"
-              >
-                <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform duration-200" />
-                blog
-              </Link>
-              <p className="text-white/25 text-xs leading-relaxed italic text-right max-w-[260px] hidden sm:block">
-                written for UT students, but most of this applies regardless of where you go
-              </p>
-            </div>
-            {/* disclaimer — mobile only */}
-            <p className="sm:hidden text-white/25 text-xs leading-relaxed italic mb-10">
-              written for UT students, but most of this applies regardless of where you go
-            </p>
-
-            {/* header */}
-            <header className="mb-12">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-white/30 border border-white/15 rounded px-2 py-0.5">
-                  guide
-                </span>
-                <span className="text-white/20 text-xs">·</span>
-                <span className="text-white/30 text-xs font-mono">May 2026</span>
-                <span className="text-white/20 text-xs">·</span>
-                <span className="text-white/30 text-xs font-mono">~10 min read</span>
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-6">
-                Guide to Landing SWE Internships
-              </h1>
-
-              <div className="h-px bg-gradient-to-r from-white/20 via-white/10 to-transparent mb-8" />
-
-              {/* TL;DR */}
-              <div className="relative pl-5">
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-white/25 rounded-full" />
-                <p className="text-sm sm:text-base text-white/60 leading-relaxed">
-                  <span className="text-white/90 font-semibold">TL;DR —</span>{" "}
-                  build things with real users, make your resume defensible and impact-focused,
-                  start LeetCode early, communicate, learn company-specific interview formats,
-                  and apply as soon as roles open.
-                </p>
-              </div>
-            </header>
-
-            {/* body */}
-            <article className="flex flex-col gap-14">
+        {/* body */}
+            <article className="flex flex-col gap-10">
 
               <Section n={1} title="Intro">
                 <P>Here&apos;s my guide to landing SWE internships.</P>
@@ -154,7 +119,7 @@ export default function SWEInternshipGuide() {
                   </P>
                   <P>
                     I think the single highest EV thing you can have on your resume is working on
-                    something with <strong className="text-white font-semibold">real users</strong>.
+                    something with <strong className="text-bright">real users</strong>.
                   </P>
                   <P>
                     This doesn&apos;t mean you need to build something from the ground up. This
@@ -178,7 +143,7 @@ export default function SWEInternshipGuide() {
                   </P>
                   <P>
                     Numbers and metrics are so important because they{" "}
-                    <strong className="text-white font-semibold">SHOW</strong> impact.
+                    <strong className="text-bright">SHOW</strong> impact.
                   </P>
                   <P>My rule is:</P>
                   <Callout>Every bullet point should be defendable in an interview.</Callout>
@@ -342,7 +307,7 @@ export default function SWEInternshipGuide() {
               </Section>
 
               {/* closing */}
-              <div className="border-t border-white/10 pt-10 flex flex-col gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-[130px_1fr] border-t border-line pt-10"><span className="text-dim">fin</span><div className="flex flex-col gap-4">
                 <P>I know this might sound like a lot and I&apos;m not gonna lie to you, it is a lot to do.</P>
                 <P>What I do want you to know tho is it&apos;s so worth the hard work and effort.</P>
                 <P>
@@ -361,11 +326,13 @@ export default function SWEInternshipGuide() {
                   If you ever need help, feel free to reach out. Always down to look at resumes,
                   help with projects, or run mock interviews.
                 </P>
-              </div>
+              </div></div>
 
             </article>
-          </div>
-        </div>
+
+        <Row k="">
+          <Link href="/blog" className="text-dim border-0 hover:text-violet">← back to blog</Link>
+        </Row>
       </div>
     </>
   );
@@ -373,14 +340,10 @@ export default function SWEInternshipGuide() {
 
 function Section({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
   return (
-    <section>
-      <div className="flex items-baseline gap-3 mb-5">
-        <span className="text-[11px] font-mono text-white/20 tabular-nums">
-          {String(n).padStart(2, "0")}
-        </span>
-        <h2 className="text-lg sm:text-xl font-semibold text-white tracking-tight">{title}</h2>
-      </div>
-      <div className="flex flex-col gap-4 pl-7">
+    <section className="grid grid-cols-1 sm:grid-cols-[130px_1fr]">
+      <span className="text-dim">{String(n).padStart(2, "0")}</span>
+      <div className="flex flex-col gap-4">
+        <h2 className="text-bright">{title}</h2>
         {children}
       </div>
     </section>
@@ -389,29 +352,25 @@ function Section({ n, title, children }: { n: number; title: string; children: R
 
 function Sub({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-3 mt-1">
-      <h3 className="text-sm font-semibold text-white/60 uppercase tracking-widest">{title}</h3>
+    <div className="flex flex-col gap-3 mt-2">
+      <h3 className="text-dim">## {title}</h3>
       {children}
     </div>
   );
 }
 
 function P({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-white/60 text-sm sm:text-base leading-[1.8]">{children}</p>
-  );
+  return <p>{children}</p>;
 }
 
 function OL({ children }: { children: React.ReactNode }) {
   return (
-    <ol className="flex flex-col gap-1.5 pl-1">
+    <ol className="flex flex-col gap-1">
       {Array.isArray(children)
         ? children.map((child, i) => (
-            <li key={i} className="flex gap-3 text-white/60 text-sm sm:text-base leading-[1.8]">
-              <span className="font-mono text-white/25 text-xs mt-1 shrink-0">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span>{child}</span>
+            <li key={i} className="flex gap-3">
+              <span className="text-dim shrink-0">{String(i + 1).padStart(2, "0")}</span>
+              <span>{isValidElement<{ children: React.ReactNode }>(child) ? child.props.children : child}</span>
             </li>
           ))
         : children}
@@ -421,30 +380,21 @@ function OL({ children }: { children: React.ReactNode }) {
 
 function Callout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative pl-4 py-3 my-1">
-      <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-white/20 rounded-full" />
-      <p className="text-white/45 text-sm sm:text-base leading-relaxed italic">{children}</p>
-    </div>
+    <p className="border-l border-violet-dim pl-4 text-dim">{children}</p>
   );
 }
 
 function Code({ children }: { children: React.ReactNode }) {
   return (
-    <code className="font-mono text-[0.85em] text-white/70 bg-white/8 border border-white/10 rounded px-1.5 py-0.5">
+    <code className="rounded border border-line bg-white/5 px-1.5 py-0.5 text-bright">
       {children}
     </code>
   );
 }
 
-function A({ href, children, color }: { href: string; children: React.ReactNode; color?: string }) {
+function A({ href, children }: { href: string; children: React.ReactNode; color?: string }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="brand-link"
-      style={{ "--brand-color": color ?? "white" } as React.CSSProperties}
-    >
+    <a href={href} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
   );

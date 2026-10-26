@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { Lexend } from "next/font/google";
+import { Courier_Prime } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/sections/NavBar";
-import Starfield from "@/components/Starfield";
-import Footer from "@/components/sections/Footer";
-const lexend = Lexend({ 
-  subsets: ["latin"] 
-});
+import SiteChrome from "@/components/SiteChrome";
+
+const mono = Courier_Prime({ subsets: ["latin"], weight: ["400", "700"], style: ["normal", "italic"] });
 
 export const metadata: Metadata = {
   title: "ali vayani",
@@ -21,13 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={lexend.className}
-      >
-        <Starfield />
-        <NavBar/>
-        <main className="pt-[4.5rem]">{children}</main>
-        <Footer/>
+      <body className={mono.className}>
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

@@ -1,35 +1,39 @@
 import type { Metadata } from "next";
-import BlogList, { Post } from "./BlogList";
+import Link from "next/link";
+import Row, { Block } from "@/components/mono/Row";
 
 export const metadata: Metadata = {
   title: "blog — ali vayani",
   description: "Thoughts on tech, recruiting, and whatever else I feel like writing about.",
 };
 
+type Post = { slug: string; title: string; date: string; description: string };
+
 const posts: Post[] = [
   {
     slug: "my-swe-internship-guide",
-    title: "Guide to Landing SWE Internships",
-    date: "May 2025",
-    tag: "guide",
+    title: "guide to landing swe internships",
+    date: "may 2025",
     description:
-      "How I went from grinding 200+ applications to 4 offers including Stripe. Everything I learned about resumes, interviews, and applying fast.",
+      "how i went from 200+ applications to 4 offers including stripe. resumes, interviews, and applying fast.",
   },
 ];
 
 export default function Blog() {
   return (
-    <div className="bg-black min-h-screen">
-      <div className="flex flex-col px-4 sm:px-8 md:px-16 lg:px-60 mt-20 pb-20">
-        <div className="max-w-3xl w-full mx-auto">
-          <div className="flex flex-col gap-2 mb-10 w-full">
-            <h1 className="text-xl sm:text-2xl font-semibold text-white">blog</h1>
-            <span className="w-full h-[1px] bg-white opacity-20" />
-          </div>
-
-          <BlogList posts={posts} />
-        </div>
-      </div>
+    <div className="flex flex-col gap-10">
+      <Block>
+        <Row k="blog">things i've learned, written down so i stop repeating myself.</Row>
+      </Block>
+      <Block>
+        {posts.map((p, i) => (
+          <Row key={p.slug} k={i === 0 ? "posts" : ""}>
+            <Link href={`/blog/${p.slug}`}>{p.title}</Link>
+            <span className="text-dim"> · {p.date}</span>
+            <p className="text-dim">{p.description}</p>
+          </Row>
+        ))}
+      </Block>
     </div>
   );
 }
