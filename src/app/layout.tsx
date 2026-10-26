@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Courier_Prime } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/SiteChrome";
+import { Analytics } from "@vercel/analytics/next";
 
 const mono = Courier_Prime({ subsets: ["latin"], weight: ["400", "700"], style: ["normal", "italic"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={mono.className}>
         <SiteChrome>{children}</SiteChrome>
+        <Analytics />
       </body>
     </html>
   );
