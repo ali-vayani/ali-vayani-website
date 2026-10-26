@@ -1,8 +1,0 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/blog/my-swe-internship-guide/page": "app/blog/my-swe-internship-guide/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/my-swe-internship-guide/page": "app/my-swe-internship-guide/page.js",
-  "/page": "app/page.js",
-  "/tech/page": "app/tech/page.js"
-}
